@@ -14,9 +14,7 @@ if($cek > 0){
 	$_SESSION['username'] = $username;
 	$_SESSION['status'] = "login";
 	header("location:admin/index.php");
-}else if($cek == 0 ){
+}else{
 	header("location:index.php?pesan=gagal");
-}else {
-	header("location:index.php?pesan=daftarberhasil");
 }
 ?>

@@ -8,6 +8,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/cardcss.css">
+  <style>
+  table{
+    width: 100%;
+    border: 1px solid black;
+  }
+  </style>
 </head>
 <body>
 <?php 
@@ -80,7 +86,8 @@
          
       </div>
       
-      <table style="border:1px solid black;" cellpadding="10"></table>
+      
+      
     </div>
 
 
