@@ -10,7 +10,7 @@
 	if(isset($_POST['submitButtonRegis'])){
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		$query = "INSERT INTO siswa VALUES('','$username','$password')";
+		$query = "INSERT INTO admin VALUES('','$username','$password')";
 		mysqli_query($koneksi, $query);
 	}
 	if(isset($_GET['pesan'])){
@@ -20,6 +20,8 @@
 			echo '<script>alert("Berhasil Logout!")</script>';
 		}else if($_GET['pesan'] == "belum_login"){
 			echo '<script>alert("Login untuk meng akses halaman Admin!")</script>';
+		} else if($_GET['pesan'] == "daftarberhasil"){
+			echo '<script>alert("Berhasil Daftar!")</script>';
 		}
 	}
 	?>

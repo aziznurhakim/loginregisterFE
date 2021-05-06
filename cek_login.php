@@ -6,7 +6,7 @@ include 'koneksi.php';
 $username = $_POST['username'];
 $password = $_POST['password'];
  
-$data = mysqli_query($koneksi,"select * from siswa where username='$username' and password='$password'");
+$data = mysqli_query($koneksi,"select * from admin where username='$username' and password='$password'");
  
 $cek = mysqli_num_rows($data);
  
@@ -14,7 +14,9 @@ if($cek > 0){
 	$_SESSION['username'] = $username;
 	$_SESSION['status'] = "login";
 	header("location:admin/index.php");
-}else{
+}else if($cek == 0 ){
 	header("location:index.php?pesan=gagal");
+}else {
+	header("location:index.php?pesan=daftarberhasil");
 }
 ?>
