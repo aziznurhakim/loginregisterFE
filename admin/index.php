@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,15 +10,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/cardcss.css">
   <style>
-  table{
-    width: 100%;
-    border: 1px solid black;
-  }
+    table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  text-align: center;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(32,32,32,.3);
+  background: #fafafa;
+}
+th,td{
+  padding: 10px 15px;
+}
+th{
+  background: linear-gradient(to right bottom, #65dfc9, #6cdbeb);
+}
   </style>
 </head>
 <body>
 <?php 
 	session_start();
+  include 'koneksi.php';
 	if($_SESSION['status']!="login"){
 		header("location:../index.php?pesan=belum_login");
 	}	
@@ -81,13 +95,36 @@
       <p> .</p>
     </div>
   </div>
+   <table cellpadding="5" cellspacing="0">
+    <tr>
+    
+    <th>No</th>
+
+    <th>Judul Buku</th>
+    <th>Pengarang</th>
+    <th>Penerbit</th>
+    <th>Jumlah Buku</th>
+    <th>Jumlah Halaman</th>
+    <th>Action</th>
+    </tr>
+    <?php foreach($result as $row):?>
+    <tr>
+    <td><?= $row["id"]; ?></td>
+    <td><?= $row["judul_buku"]; ?></td>
+    <td><?= $row["pengarang"]; ?></td>
+    <td><?= $row["penerbit"]; ?></td>
+    <td><?= $row["jumlah_buku"]; ?></td>
+    <td><?= $row["jumlah_halaman"]; ?></td>
+    <td>
+    <a href=$delete>ubah</a> |
+    <a href="">hapus</a>
+    </tr>
+    <?php endforeach?>
+    </table>
 </div>
 	
          
       </div>
-      
-      
-      
     </div>
 
 
