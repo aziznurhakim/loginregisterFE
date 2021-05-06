@@ -5,7 +5,6 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<br/>
 	<?php 
 	require 'koneksi.php';
 	if(isset($_POST['submitButtonRegis'])){
@@ -24,7 +23,6 @@
 		}
 	}
 	?>
-	<br/>
 	<div class="hero">
 		<div class="form-box">
 			<div class="button-box">
