@@ -20,6 +20,34 @@
   box-shadow: 0 2px 12px rgba(32,32,32,.3);
   background: #fafafa;
 }
+.color-change {
+  border-radius: 5px;
+  font-size: 10px;
+  padding: 14px 10px;
+  cursor: pointer;
+  color: black;
+  margin-left: 110px;
+  background: linear-gradient(to right bottom, #65dfc9, #6cdbeb);
+  font-size: 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  border: 1px solid #fff;
+  box-shadow: 2px 2px 5px #AFE9FF;
+  transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+}
+
+.color-change:hover {
+  color: #006398;
+  border: 1px solid #006398;
+  box-shadow: 2px 2px 20px #AFE9FF;
+}
+
+button.color-change {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
 th,td{
   padding: 10px 15px;
 }
@@ -31,7 +59,12 @@ th{
 <body>
 <?php 
 	session_start();
-  include 'koneksi.php';
+  $koneksi = mysqli_connect('localhost','root','','perpusku');
+ 
+if (mysqli_connect_errno()){
+	echo "Koneksi database gagal : " . mysqli_connect_error();
+}
+$result = mysqli_query($koneksi ,"SELECT * FROM buku");
 	if($_SESSION['status']!="login"){
 		header("location:../index.php?pesan=belum_login");
 	}	
@@ -65,7 +98,7 @@ th{
       <img style="float: left;" src="../asset/user.png"/>
       <h3>9</h3>
       <p>Total Siswa</p>
-      <p> .</p>
+      <Button class="color-change">Tambah Siswa</Button>
     </div>
   </div>
 
@@ -74,7 +107,7 @@ th{
     <img style="float: left;" src="../asset/agenda.png"/>
       <h3>10</h3>
       <p>Total Buku</p>
-      <p> .</p>
+      <Button class="color-change">Tambah Buku</Button>
     </div>
   </div>
   
@@ -83,7 +116,7 @@ th{
     <img style="float: left;" src="../asset/bookmark.png"/>
       <h3>11</h3>
       <p>Total Pinjaman</p>
-      <p> .</p>
+      <Button class="color-change">Tambah Pinjaman</Button>
     </div>
   </div>
   
@@ -92,7 +125,7 @@ th{
     <img style="float: left;" src="../asset/favourite.png"/>
       <h3>12</h3>
       <p>Total Pengembalian</p>
-      <p> .</p>
+      <p>.</p>
     </div>
   </div>
    <table cellpadding="5" cellspacing="0">
