@@ -3,6 +3,7 @@
 <head>
 	<title>Login and Register Form</title>
 	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="jquery.js"></script>
 </head>
 <body>
 	<?php 
@@ -32,15 +33,41 @@
 			</div>
 			<form id="login" class="input-group" method="post" action="cek_login.php">
 				<input type="text" class="input-field" name="username" placeholder="Username" required>
-				<input type="password" class="input-field" name="password" placeholder="Enter Password" required>
-				<input type="checkbox" class="chec-box"><span>Remember Password</span>
+				<input type="password" id="input-password" class="input-field" name="password" placeholder="Enter Password" required>
+				<input type="checkbox" class="chec-box"><span>Show Password</span>
 				<button type="submit" class="submit-btn">Log In</button>
+				<script type="text/javascript">
+        $(document).ready(function(){
+            $('.chec-box').click(function(){
+                if($(this).is(':checked')){
+                    $('#input-password').attr('type','text');
+                } else {
+                    $('#input-password').attr('type','password');
+                }
+                
+            });
+        });
+
+        </script>
 			</form>
 			<form id="register" class="input-group" method = "post" action="">
 				<input type="text" class="input-field" for="username" name="username" id="username" placeholder="Username" required>
-				<input type="password" class="input-field" for="password" name="password" id="username" placeholder="Enter Password" required>
-				<input type="checkbox" class="chec-box"><span>I agree to the terms & conditions</span>
+				<input type="password" id="input-password" class="input-field" name="password" placeholder="Enter Password" required>
+				<input type="checkbox" class="chec-box"><span>Show Password</span>
 				<button type="submit" class="submit-btn" name="submitButtonRegis">Register</button>
+				<script type="text/javascript">
+        $(document).ready(function(){
+            $('.chec-box').click(function(){
+                if($(this).is(':checked')){
+                    $('#input-password').attr('type','text');
+                } else {
+                    $('#input-password').attr('type','password');
+                }
+                
+            });
+        });
+
+        </script>
 			</form>
 		</div>
 	</div>

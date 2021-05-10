@@ -10,14 +10,20 @@ function hapus($id){
 	mysqli_query($koneksi,"DELETE FROM buku WHERE id = $id");
 	return mysqli_affected_rows($koneksi);
 }
-function query($query){
-	global $koneksi;
-	$result = mysqli_query($koneksi,$query);
-	$rows = [];
-	while($row = mysqli_fetch_assoc($result)){
-		$rows[] = $row;
-	}
-	return $rows;
-}
- 
+$id = $_GET["id"];
+if(hapus($id)> 0){
+    echo "
+    <script>
+    alert('data berhasil dihapus!');
+    document.location.href = 'buku.php';
+    </script>
+    ";
+} else {
+    echo "
+    <script>
+    alert('data gagal dihapus!');
+    document.location.href = 'buku.php';
+    </script>
+    ";
+};
 ?>

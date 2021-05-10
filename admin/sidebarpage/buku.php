@@ -4,11 +4,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Perpus Ku</title>
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="../styles.css">
 	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/cardcss.css">
+	<link rel="stylesheet" href="../css/cardcss.css">
   <style>
     table {
   width: 100%;
@@ -60,14 +60,20 @@ th{
 <?php 
 	session_start();
   $koneksi = mysqli_connect('localhost','root','','perpusku');
- 
+  $resultBuku = mysqli_query($koneksi,"SELECT count(*) FROM buku");
+  $delete = mysqli_query($koneksi,'DELETE FROM buku WHERE id = $row["id"]');
+  $row = mysqli_fetch_array($resultBuku);
+
+  
+  $total = $row[0];
+
 if (mysqli_connect_errno()){
 	echo "Koneksi database gagal : " . mysqli_connect_error();
 }
 $result = mysqli_query($koneksi ,"SELECT * FROM buku");
 	if($_SESSION['status']!="login"){
 		header("location:../index.php?pesan=belum_login");
-	}	
+	};
 	?>
 
 <div class="wrapper">
@@ -75,8 +81,8 @@ $result = mysqli_query($koneksi ,"SELECT * FROM buku");
         <h2>Perpus Ku</h2>
         <ul>
 			
-            <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
-            <li><a href="../admin/sidebarpage/buku.php"><i class="fas fa-book"></i>Buku</a></li>
+            <li><a href="../index.php"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="#"><i class="fas fa-book"></i>Buku</a></li>
             <li><a href="#"><i class="fas fa-user"></i>Siswa</a></li>
             <li><a href="#"><i class="fas fa-address-card"></i>Pinjaman</a></li>
             <li><a href="#"><i class="fas fa-project-diagram"></i>Pengembalian</a></li>
@@ -96,37 +102,10 @@ $result = mysqli_query($koneksi ,"SELECT * FROM buku");
 		<div class="row">
   <div class="column">
     <div class="card">
-      <img style="float: left;" src="../asset/user.png"/>
-      <h3>9</h3>
-      <p>Total Siswa</p>
-      <Button class="color-change">Tambah Siswa</Button>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-    <img style="float: left;" src="../asset/agenda.png"/>
-      <h3>10</h3>
+    <img style="float: left;" src="../sidebarpage/asset/agenda.png"/>
+      <h3><?php echo $total; ?></h3>
       <p>Total Buku</p>
-      <Button class="color-change">Tambah Buku</Button>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-    <img style="float: left;" src="../asset/bookmark.png"/>
-      <h3>11</h3>
-      <p>Total Pinjaman</p>
-      <Button class="color-change">Tambah Pinjaman</Button>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-    <img style="float: left;" src="../asset/favourite.png"/>
-      <h3>12</h3>
-      <p>Total Pengembalian</p>
-      <p>.</p>
+      <Button class="color-change" onclick="location.href='../sidebarpage/tambahBuku.php'" >Tambah Buku</Button>
     </div>
   </div>
    <table cellpadding="5" cellspacing="0">
@@ -150,8 +129,8 @@ $result = mysqli_query($koneksi ,"SELECT * FROM buku");
     <td><?= $row["jumlah_buku"]; ?></td>
     <td><?= $row["jumlah_halaman"]; ?></td>
     <td>
-    <a href="">ubah</a> |
-    <a href="">hapus</a>
+    <a href="ubahBuku.php?id=<?=$row["id"];?>">ubah</a> |
+    <a href="hapusBuku.php?id=<?=$row["id"];?>">hapus</a>
     </tr>
     <?php endforeach?>
     </table>
