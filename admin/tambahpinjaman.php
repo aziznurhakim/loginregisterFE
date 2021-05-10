@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 	<meta charset="UTF-8">
-	<title>Peminjaman</title>
+	<title>Input Peminjaman</title>
 	<link rel="stylesheet" href="styles.css">
 	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,7 +48,7 @@ $result = mysqli_query($koneksi ,"SELECT * FROM peminjaman");
 			
             <li><a href="index.php"><i class="fas fa-home"></i>Home</a></li>
             <li><a href="#"><i class="fas fa-user"></i>Siswa</a></li>
-            <li><a href="#"><i class="fas fa-address-card"></i>Pinjaman</a></li>
+            <li><a href="peminjaman.php"><i class="fas fa-address-card"></i>Pinjaman</a></li>
             <li><a href="logout.php"><i class="fas fa-map-pin"></i>Logout</a></li>
         </ul> 
         <div class="social_media">
@@ -58,17 +57,52 @@ $result = mysqli_query($koneksi ,"SELECT * FROM peminjaman");
           <a href="https://www.instagram.com/azisshkim"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
-    <div class="main_content">
-
-
-        <div class="header"><h4>Selamat datang, <?php echo $_SESSION['username']; ?>! Selamat Meminjam:).</h4></div>  
-        <div class="info">
-		<div class="row">
-
-    <table cellpadding="5" cellspacing="0">
-    <tr>
-    
-    <th>No</th>
+</head>
+<body>
+	<div class="form">
+		<div class="container">
+	<h1>Tambah Peminjaman</h1>
+	<form action="form_add_aksi.php" method="POST">
+		<table>
+			<tr>
+			<td>ID Buku</td>
+			<td>:</td>
+			<td><input type="text" name="id_buku"></td>
+			</tr>
+			<tr>
+			<td>Nama Siswa</td>
+			<td>:</td>
+			<td><input type="text" name="nama_siswa"></td>
+			</tr>
+			<tr>
+			<td>Tgl Pinjam</td>
+			<td>:</td>
+			<td><input type="date" name="Tgl_Pinjam"></td>
+			</tr>
+			<tr>
+			<td>Tgl Kembali</td>
+			<td>:</td>
+			<td><input type="date" name="Tgl_Kembali"></td>
+			</tr>
+			<tr>
+			<td>Terlambat</td>
+			<td>:</td>
+			<td><input type="text" name="terlambat"></td>
+			</tr>
+			<tr>
+			<td>Status</td>
+			<td>:</td>
+			<td><input type="checkbox" name="status"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>
+					<button type="submit" name="kirim">Kirim</button>
+					<button type="reset" name="reset">Batal</button>
+				</td>
+			</tr>
+			<th>No</th>
 
     <th>ID Buku</th>
     <th>Nama Siswa</th>
@@ -91,17 +125,9 @@ $result = mysqli_query($koneksi ,"SELECT * FROM peminjaman");
     <a href="">hapus</a>
     </tr>
     <?php endforeach?>
-    </table>
-</div>
-	
-         
-      </div>
-    </div>
-
-
-    
-</div>
-
-
+		</table>
+		</div>
+	</form>
+	</div>
 </body>
 </html>

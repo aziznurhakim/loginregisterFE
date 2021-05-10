@@ -105,3 +105,11 @@ tr td:last-child {
 .wrapper .main_content .info div {
   margin-bottom: 20px;
 }
+
+.form {
+  margin: auto;
+}
+
+.container {
+  padding: 5px;
+}

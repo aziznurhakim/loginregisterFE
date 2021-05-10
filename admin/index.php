@@ -106,7 +106,7 @@ $result = mysqli_query($koneksi ,"SELECT * FROM buku");
     <img style="float: left;" src="../asset/agenda.png"/>
       <h3>10</h3>
       <p>Total Buku</p>
-      <Button class="color-change">Tambah Buku</Button>
+      <Button href="tambahpeminjaman.php" class="color-change">Tambah Buku</Button>
     </div>
   </div>
   
@@ -124,7 +124,7 @@ $result = mysqli_query($koneksi ,"SELECT * FROM buku");
     <img style="float: left;" src="../asset/favourite.png"/>
       <h3>12</h3>
       <p>Total Pengembalian</p>
-      <p>.</p>
+      <Button class="color-change">Tambah Pinjaman</Button>
     </div>
   </div>
    <table cellpadding="5" cellspacing="0">
