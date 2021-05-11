@@ -1,3 +1,4 @@
+
 <?php
 $koneksi = mysqli_connect('localhost','root','','perpusku');
  
@@ -85,7 +86,6 @@ $totalSiswa = $rowSiswa[0];
             background: linear-gradient(to right bottom, #65dfc9, #6cdbeb);
         }
         button:focus { outline:0 !important; }
-    
     table {
   width: 100%;
   border-collapse: collapse;
@@ -153,9 +153,9 @@ $result = mysqli_query($koneksi ,"SELECT * FROM buku");
 			
             <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
             <li><a href="../admin/sidebarpage/buku.php"><i class="fas fa-book"></i>Buku</a></li>
-            <li><a href="#"><i class="fas fa-user"></i>Siswa</a></li>
             <li><a href="../admin/sidebarpage/peminjaman.php"><i class="fas fa-address-card"></i>Pinjaman</a></li>
-            <li><a href="logout.php"><i class="fas fa-map-pin"></i>Logout</a></li>
+            <li><a href="../admin/sidebarpage/siswa.php"><i class="fas fa-user"></i>Siswa</a></li>
+            <li><a href="../admin/logout.php"><i class="fas fa-map-pin"></i>Logout</a></li>
         </ul> 
         <div class="social_media">
           <a href="#"><i class="fab fa-facebook-f"></i></a>

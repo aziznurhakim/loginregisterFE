@@ -48,8 +48,9 @@ $result = mysqli_query($koneksi ,"SELECT * FROM peminjaman");
         <ul>
 			
             <li><a href="../index.php"><i class="fas fa-home"></i>Home</a></li>
-            <li><a href="#"><i class="fas fa-user"></i>Siswa</a></li>
+            <li><a href="../sidebarpage/buku.php"><i class="fas fa-book"></i>Buku</a></li>
             <li><a href="#"><i class="fas fa-address-card"></i>Pinjaman</a></li>
+            <li><a href="../sidebarpage/siswa.php"><i class="fas fa-user"></i>Siswa</a></li>
             <li><a href="logout.php"><i class="fas fa-map-pin"></i>Logout</a></li>
         </ul> 
         <div class="social_media">

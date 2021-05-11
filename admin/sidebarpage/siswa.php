@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,8 +59,8 @@ th{
 <?php 
 	session_start();
   $koneksi = mysqli_connect('localhost','root','','perpusku');
-  $resultBuku = mysqli_query($koneksi,"SELECT count(*) FROM buku");
-  $delete = mysqli_query($koneksi,'DELETE FROM buku WHERE id = $row["id"]');
+  $resultBuku = mysqli_query($koneksi,"SELECT count(*) FROM siswa");
+  $delete = mysqli_query($koneksi,'DELETE FROM siswa WHERE id = $row["id"]');
   $row = mysqli_fetch_array($resultBuku);
 
   
@@ -70,7 +69,7 @@ th{
 if (mysqli_connect_errno()){
 	echo "Koneksi database gagal : " . mysqli_connect_error();
 }
-$result = mysqli_query($koneksi ,"SELECT * FROM buku");
+$result = mysqli_query($koneksi ,"SELECT * FROM siswa");
 	if($_SESSION['status']!="login"){
 		header("location:../index.php?pesan=belum_login");
 	};
@@ -101,10 +100,10 @@ $result = mysqli_query($koneksi ,"SELECT * FROM buku");
 		<div class="row">
   <div class="column">
     <div class="card">
-    <img style="float: left;" src="../sidebarpage/asset/agenda.png"/>
+    <img style="float: left;" src="../sidebarpage/asset/user.png"/>
       <h3><?php echo $total; ?></h3>
-      <p>Total Buku</p>
-      <Button class="color-change" onclick="location.href='../sidebarpage/tambahBuku.php'" >Tambah Buku</Button>
+      <p>Total Siswa</p>
+      <Button class="color-change" onclick="location.href='../sidebarpage/tambahSiswa.php'" >Tambah Siswa</Button>
     </div>
   </div>
    <table cellpadding="5" cellspacing="0">
@@ -112,24 +111,22 @@ $result = mysqli_query($koneksi ,"SELECT * FROM buku");
     
     <th>No</th>
 
-    <th>Judul Buku</th>
-    <th>Pengarang</th>
-    <th>Penerbit</th>
-    <th>Jumlah Buku</th>
-    <th>Jumlah Halaman</th>
+    <th>NISN</th>
+    <th>Nama</th>
+    <th>Tanggal Lahir</th>
+    <th>Kelas</th>
     <th>Action</th>
     </tr>
     <?php foreach($result as $row):?>
     <tr>
     <td><?= $row["id"]; ?></td>
-    <td><?= $row["judul_buku"]; ?></td>
-    <td><?= $row["pengarang"]; ?></td>
-    <td><?= $row["penerbit"]; ?></td>
-    <td><?= $row["jumlah_buku"]; ?></td>
-    <td><?= $row["jumlah_halaman"]; ?></td>
+    <td><?= $row["NISN"]; ?></td>
+    <td><?= $row["Nama"]; ?></td>
+    <td><?= $row["Tgl_Lahir"]; ?></td>
+    <td><?= $row["Kelas"]; ?></td>
     <td>
-    <a href="ubahBuku.php?id=<?=$row["id"];?>">ubah</a> |
-    <a href="hapusBuku.php?id=<?=$row["id"];?>">hapus</a>
+    <a href="ubahSiswa.php?id=<?=$row["id"];?>">ubah</a> |
+    <a href="hapusSiswa.php?id=<?=$row["id"];?>">hapus</a>
     </tr>
     <?php endforeach?>
     </table>

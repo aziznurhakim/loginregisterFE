@@ -5,13 +5,13 @@ $id = $_GET["id"];
 if (mysqli_connect_errno()){
 	echo "Koneksi database gagal : " . mysqli_connect_error();
 }
-$buku = query("SELECT * FROM buku WHERE id = $id")[0];
+$siswa = query("SELECT * FROM siswa WHERE id = $id")[0];
 if(isset($_POST["submit"])){
 if(ubah($_POST) > 0){
     echo "
     <script>
     alert('data berhasil diubah!');
-    document.location.href = 'buku.php';
+    document.location.href = 'siswa.php';
     </script>
     ";
 }
@@ -79,15 +79,15 @@ if(ubah($_POST) > 0){
 <?php 
 	session_start();
   $koneksi = mysqli_connect('localhost','root','','perpusku');
-  $resultBuku = mysqli_query($koneksi,"SELECT count(*) FROM buku");
-  $rowBuku = mysqli_fetch_array($resultBuku);
+  $resultSiswa = mysqli_query($koneksi,"SELECT count(*) FROM siswa");
+  $rowSiswa = mysqli_fetch_array($resultSiswa);
   
-  $total = $rowBuku[0];
+  $total = $rowSiswa[0];
 
 if (mysqli_connect_errno()){
 	echo "Koneksi database gagal : " . mysqli_connect_error();
 }
-$result = mysqli_query($koneksi ,"SELECT * FROM buku");
+$result = mysqli_query($koneksi ,"SELECT * FROM siswa");
 	if($_SESSION['status']!="login"){
 		header("location:../index.php?pesan=belum_login");
 	}	
@@ -99,7 +99,7 @@ $result = mysqli_query($koneksi ,"SELECT * FROM buku");
         <ul>
 			
         <li><a href="../index.php"><i class="fas fa-home"></i>Home</a></li>
-        <li><a href="../sidebarpage/buku.php"><i class="fas fa-book"></i>Buku</a></li>
+            <li><a href="../sidebarpage/buku.php"><i class="fas fa-book"></i>Buku</a></li>
             <li><a href="../sidebarpage/peminjaman.php"><i class="fas fa-address-card"></i>Pinjaman</a></li>
             <li><a href="../sidebarpage/siswa.php"><i class="fas fa-user"></i>Siswa</a></li>
             <li><a href="logout.php"><i class="fas fa-map-pin"></i>Logout</a></li>
@@ -113,33 +113,29 @@ $result = mysqli_query($koneksi ,"SELECT * FROM buku");
     <div class="main_content">
         <div class="header"><h4>Selamat datang, <?php echo $_SESSION['username']; ?>! anda telah login.</h4></div>  
         <div class="info">
-        <div class="title">Ubah Buku</div>
-    <div class="content">
+        <div class="title">Ubah Siswa</div>
+        <div class="content">
       <form action="#" method="POST">
         <div class="user-details">
-            <input type="hidden" name="id" value="<?= $buku["id"]; ?>">
+        <input type="hidden" name="id" value="<?= $buku["id"]; ?>">
           <div class="input-box">
-            <span class="details">Judul Buku</span>
-            <input type="text" name="judul_buku" required placeholder="Masukkan Judul Buku"  value="<?= $buku["judul_buku"]; ?>">
+            <span class="details">NISN</span>
+            <input type="text" name="NISN" placeholder="Masukkan NISN Anda" value="<?= $siswa["NISN"]; ?>" required>
           </div>
           <div class="input-box">
-            <span class="details">Pengarang</span>
-            <input type="text" name="pengarang" placeholder="Masukkan Pengarang" required value="<?= $buku["pengarang"];?>">
+            <span class="details">Nama</span>
+            <input type="text" name="Nama" placeholder="Masukkan Nama Anda" value="<?= $siswa["Nama"]; ?>" required>
           </div>
           <div class="input-box">
-            <span class="details">Penerbit</span>
-            <input type="text" name="penerbit" placeholder="Masukkan Penerbit" required value="<?= $buku["penerbit"];?>">
+            <span class="details">Tanggal Lahir</span>
+            <input type="date" name="Tgl_Lahir" placeholder="Masukkan Tanggal Lahir Anda"  value="<?php date("Y-m-d")?>" required>
           </div>
           <div class="input-box">
-            <span class="details">Jumlah Buku</span>
-            <input type="text" name="jumlah_buku" placeholder="Masukkan Jumlah Buku" required value="<?= $buku["jumlah_buku"];?>">
-          </div>
-          <div class="input-box">
-            <span class="details">Jumlah Halaman</span>
-            <input type="text" name="jumlah_halaman" placeholder="Masukkan Jumlah Halaman" required value="<?= $buku["jumlah_halaman"];?>">
+            <span class="details">Kelas</span>
+            <input type="text" name="Kelas" placeholder="Masukkan Kelas Anda" value="<?= $siswa["Kelas"]; ?>" required>
           </div>
           <div class="button">
-          <button type="submit" name="submit" >Ubah Buku</button>
+          <button type="submit" name="submit" >Ubah Data Siswa</button>
         </div>
         </div>
         
