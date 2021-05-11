@@ -10,6 +10,11 @@ function hapus($id){
 	mysqli_query($koneksi,"DELETE FROM buku WHERE id = $id");
 	return mysqli_affected_rows($koneksi);
 }
+function hapuspinjaman($id){
+	global $koneksi;
+	mysqli_query($koneksi,"DELETE FROM peminjaman WHERE id = $id");
+	return mysqli_affected_rows($koneksi);
+}
 function query($query){
 	global $koneksi;
 	$result = mysqli_query($koneksi,$query);
@@ -35,6 +40,25 @@ function ubah($data){
                 penerbit = '$penerbit',
                 jumlah_buku = '$jumlah_buku',
                 jumlah_halaman = '$jumlah_halaman'
+                WHERE id = $id
+                ";
+    mysqli_query($koneksi, $query);
+
+    return mysqli_affected_rows($koneksi);
+}
+function ubahPinjaman($data){
+    global $koneksi;
+    $id = $data["id"];
+    $judul_buku = htmlspecialchars($data["judul_buku"]);
+    $nama_siswa = htmlspecialchars($data["nama_siswa"]);
+    $tgl_pinjam = htmlspecialchars($data["tgl_pinjam"]);
+    $tgl_kembali = htmlspecialchars($data["tgl_kembali"]);
+
+    $query = "UPDATE peminjaman SET 
+                judul_buku = '$judul_buku',
+                nama_siswa = '$nama_siswa',
+                tgl_pinjam = '$tgl_pinjam',
+                tgl_kembali = '$tgl_kembali'
                 WHERE id = $id
                 ";
     mysqli_query($koneksi, $query);
